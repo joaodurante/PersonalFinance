@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/body-parser": "^1.17.0",
+    "@types/node": "^10.12.18",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-query-int": "^3.0.0",
