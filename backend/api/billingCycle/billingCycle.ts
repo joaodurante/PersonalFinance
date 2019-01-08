@@ -3,7 +3,7 @@
  */
 
 import * as restful from 'node-restful';
-import { messages } from './messages';
+import { messages } from './errorsService';
 const mongoose = restful.mongoose;
 
 const reqTrue = [ true, messages.required ];
@@ -23,7 +23,7 @@ const debtSchema = new mongoose.Schema({
 const billingCycleSchema = new mongoose.Schema({
     name: { type: String, required: reqTrue },
     month: { type: Number, min: [1, messages.min], max: [12, messages.max], required: reqTrue },
-    year: { type: Number, min: [1970, messages.min], max: [2100, messages.min], required: reqTrue },
+    year: { type: Number, min: [1970, messages.min], max: [2100, messages.max], required: reqTrue },
     credits: [creditSchema],
     debts: [debtSchema]
 });
