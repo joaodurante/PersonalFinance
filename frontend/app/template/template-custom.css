@@ -3,3 +3,11 @@
     bottom: 0px;
     width: 100%;
 }
+
+html {
+    background-color: #ecf0f5;
+}
+
+.fa-bank{font-size: 20px;}
+.fa-credit-card{font-size: 20px;}
+.fa-money{font-size: 20px;}

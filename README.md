@@ -2,7 +2,7 @@
 An application to control your personal finances
 
 ## Built with
-* NodeJS]
+* NodeJS
 * Express
 * AngularJS
 * Gulp
