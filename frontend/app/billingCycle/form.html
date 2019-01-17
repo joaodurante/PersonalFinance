@@ -5,9 +5,9 @@
             <field id="year" label="Year" grid="12 6 4" type="number" model="bCtrl.billingCycle.year"></field>
         </div>
         <div class="box-footer">
-            <button class="btn btn-primary" ng-click="bCtrl.create()">Create</button>
-            <button class="btn btn-info">Update</button>
-            <button class="btn btn-danger">Delete</button>
-            <button class="btn btn-default">Cancel</button>
+            <button class="btn btn-primary" ng-click="bCtrl.create()" ng-if="bCtrl.tabCreate">Create</button>
+            <button class="btn btn-warning" ng-if="bCtrl.tabUpdate">Update</button>
+            <button class="btn btn-danger" ng-if="bCtrl.tabDelete">Delete</button>
+            <button class="btn btn-default" ng-click="bCtrl.refresh()">Cancel</button>
         </div>
     </div>
