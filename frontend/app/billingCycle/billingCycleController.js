@@ -1,4 +1,4 @@
-(function(){
+(() =>{
     angular.module('personalFinance').controller('billingController', [
         '$http',
         'msgs',
@@ -10,7 +10,7 @@
         const vm = this;
         const url = 'http://localhost:3000/api/billingCycles';
 
-        vm.refresh = function() {
+        vm.refresh = () =>{
             $http.get(url).then((res) => {
                 vm.billingCycle = {};
                 vm.billingCycles = res.data;
@@ -18,23 +18,43 @@
             })
         }
 
-        vm.create = function() {
-            $http.post(url, vm.billingCycle).then((res) => {
-                vm.refresh();
-                msgs.addSuccess('Successful operation!');
-            }).catch(function(res){
-                msgs.addError(res.data.errors);
-            })
-        }
-
-        vm.showTabUpdate = function(billingCycle){
+        vm.showTabUpdate = (billingCycle) => {
             vm.billingCycle = billingCycle;
             tabs.show(vm, {tabUpdate: true});
         }
 
-        vm.showTabDelete = function(billingCycle){
+        vm.showTabDelete = (billingCycle) => {
             vm.billingCycle = billingCycle;
             tabs.show(vm, {tabDelete: true});
+        }
+
+        vm.create = () => {
+            $http.post(url, vm.billingCycle).then((res) => {
+                vm.refresh();
+                msgs.addSuccess('The record was created!');
+            }).catch((res) => {
+                msgs.addError(res.data.errors);
+            })
+        }
+
+        vm.delete = () =>{
+            const urlDelete = `${url}/${vm.billingCycle._id}`;
+            $http.delete(urlDelete, vm.billingCycle).then((res) => {
+                vm.refresh();
+                msgs.addSuccess('The record was deleted!');
+            }).catch((res) => {
+                msgs.addError(res.data.errors);
+            })
+        }
+
+        vm.update = () =>{
+            const urlUpdate = `${url}/${vm.billingCycle._id}`;
+            $http.put(urlUpdate, vm.billingCycle).then((res) => {
+                vm.refresh();
+                msgs.addSuccess('The record was updated');
+            }).catch((res) => {
+                msgs.addError(res.data.errors);
+            })
         }
 
         vm.refresh();
