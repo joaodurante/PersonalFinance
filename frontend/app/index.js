@@ -1,5 +1,6 @@
-angular.module('personalFinance', [
-    'ui.router',
-    'ngAnimate',
-    'toastr'
-]);
+(function(){
+    angular.module('personalFinance', [
+        'ui.router',
+        'toastr'
+    ]);
+})();

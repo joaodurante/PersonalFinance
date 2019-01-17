@@ -1,1 +1,35 @@
-<h1>Billig Cycles</h1>
+<content-header title="Payment cicle" subtitle="Register"></content-header>
+
+<section class="content">
+    <div class="nav-tabs-custom" ng-controller="billingController as bCtrl">
+        <ul class="nav nav-tabs">
+            <li>
+                <a href data-target="#tabList" data-toggle="tab">
+                    <i class="fa fa-bars"></i> List
+                </a>
+            </li>
+            <li>
+                <a href data-target="#tabCreate" data-toggle="tab">
+                    <i class="fa fa-plus"></i> Create
+                </a>
+            </li>
+            <li>
+                <a href data-target="#tabUpdate" data-toggle="tab">
+                    <i class="fa fa-pencil"></i> Update
+                </a>
+            </li>
+            <li>
+                <a href data-target="#tabDelete" data-toggle="tab">
+                    <i class="fa fa-trash-o"></i> Delete
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane" id="tabList" ng-include="'billingCycle/list.html'"></div>
+            <div class="tab-pane" id="tabCreate" ng-include="'billingCycle/form.html'"></div>
+            <div class="tab-pane" id="tabUpdate" ng-include="'billingCycle/form.html'"></div>
+            <div class="tab-pane" id="tabDelete" ng-include="'billingCycle/form.html'"></div>
+        </div>
+    </div>
+</section>
