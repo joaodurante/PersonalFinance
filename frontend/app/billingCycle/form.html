@@ -1,8 +1,22 @@
 <div role="form">
         <div class="box-body">
-            <field id="name" label="Name" grid="12 6 4" model="bCtrl.billingCycle.name" readonly="bCtrl.tabDelete"></field>
-            <field id="month" label="Month" grid="12 6 4" type="number" model="bCtrl.billingCycle.month" readonly="bCtrl.tabDelete"></field>
-            <field id="year" label="Year" grid="12 6 4" type="number" model="bCtrl.billingCycle.year" readonly="bCtrl.tabDelete"></field>
+            <field id="name" label="Name" grid="12 12 4" model="bCtrl.billingCycle.name"
+            readonly="bCtrl.tabDelete" placeholder="Enter the name"></field>
+            <field id="month" label="Month" grid="12 12 4"model="bCtrl.billingCycle.month"
+            readonly="bCtrl.tabDelete" placeholder="Enter the month" type="number"></field>
+            <field id="year" label="Year" grid="12 12 4" model="bCtrl.billingCycle.year"
+            readonly="bCtrl.tabDelete" placeholder="Enter the year" type="number"></field>
+
+            <div class="col-xs-12 col-md-6">
+                <fieldset>
+                    <legend>Credits</legend>
+                    <div ng-include="'billingCycle/creditList.html'"></div>
+                </fieldset>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <legend>Debts</legend>
+                <div ng-include="'billingCycle/debtList.html'"></div>
+            </div>
         </div>
         <div class="box-footer">
             <button class="btn btn-primary" ng-click="bCtrl.create()" ng-if="bCtrl.tabCreate">Create</button>

@@ -12,7 +12,7 @@
 
         vm.refresh = () =>{
             $http.get(url).then((res) => {
-                vm.billingCycle = {};
+                vm.billingCycle = {credits: [{}], debts: [{}]};
                 vm.billingCycles = res.data;
                 tabs.show(vm, {tabList: true, tabCreate: true});
             })
@@ -37,21 +37,21 @@
             })
         }
 
-        vm.delete = () =>{
-            const urlDelete = `${url}/${vm.billingCycle._id}`;
-            $http.delete(urlDelete, vm.billingCycle).then((res) => {
-                vm.refresh();
-                msgs.addSuccess('The record was deleted!');
-            }).catch((res) => {
-                msgs.addError(res.data.errors);
-            })
-        }
-
         vm.update = () =>{
             const urlUpdate = `${url}/${vm.billingCycle._id}`;
             $http.put(urlUpdate, vm.billingCycle).then((res) => {
                 vm.refresh();
                 msgs.addSuccess('The record was updated');
+            }).catch((res) => {
+                msgs.addError(res.data.errors);
+            })
+        }
+
+        vm.delete = () =>{
+            const urlDelete = `${url}/${vm.billingCycle._id}`;
+            $http.delete(urlDelete, vm.billingCycle).then((res) => {
+                vm.refresh();
+                msgs.addSuccess('The record was deleted!');
             }).catch((res) => {
                 msgs.addError(res.data.errors);
             })
