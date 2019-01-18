@@ -17,17 +17,22 @@
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
                         <input ng-model="credit.value" class="form-control" placeholder="Enter the value"
-                            ng-readonly="bCtrl.tabDelete" type="number">
+                            ng-readonly="bCtrl.tabDelete" ng-change="bCtrl.calculateValues()" type="number">
                     </div>
                 </td>
                 <td class="table-actions">
-                    <button class="btn btn-success" ng-class="{disabled: bCtrl.tabDelete}">
+                    <button class="btn btn-success" ng-disabled="bCtrl.tabDelete || !credit.name"
+                        ng-click="bCtrl.addCredit($index)">
                         <i class="fa fa-plus"></i>
                     </button>
-                    <button class="btn btn-warning" ng-class="{disabled: bCtrl.tabDelete">
+
+                    <button class="btn btn-warning" ng-disabled="bCtrl.tabDelete || !credit.name"
+                        ng-click="bCtrl.cloneCredit($index, credit)">
                         <i class="fa fa-clone"></i>
                     </button>
-                    <button class="btn btn-danger" ng-class="{disabled: bCtrl.tabDelete">
+
+                    <button class="btn btn-danger" ng-disabled="bCtrl.tabDelete"
+                        ng-click="bCtrl.deleteCredit($index)">
                         <i class="fa fa-trash-o"></i>
                     </button>
                 </td>

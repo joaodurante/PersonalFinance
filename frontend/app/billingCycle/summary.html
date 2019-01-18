@@ -1,0 +1,13 @@
+<div class="row">
+    <value-box grid="12 4" color="bg-green" icon="fa fa-bank"
+        value="R$ {{ bCtrl.credit | number: 2 }}" title="Total credits">
+    </value-box>
+
+    <value-box grid="12 4" color="bg-red" icon="fa fa-credit-card"
+        value="R$ {{ bCtrl.debt | number: 2 }}" title="Total debts">
+    </value-box>
+
+    <value-box grid="12 4" color="bg-blue" icon="fa fa-money"
+        value="R$ {{ bCtrl.total | number: 2 }}" title="Consolidated value">
+    </value-box>
+</div>

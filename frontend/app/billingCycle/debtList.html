@@ -18,24 +18,27 @@
                     <div class="input-group">
                         <span class="input-group-addon">$</span>
                         <input ng-model="debt.value" class="form-control" placeholder="Enter the value"
-                            ng-readonly="bCtrl.tabDelete" type="number">
+                            ng-readonly="bCtrl.tabDelete" ng-change="bCtrl.calculateValues()" type="number">
                     </div>
                 </td>
                 <td>
-                    <select class="form-control" ng-class="{disabled: bCtrl.tabDelete}" ng-model="debt.status">
+                    <select class="form-control" ng-disabled="bCtrl.tabDelete" ng-model="debt.status">
                         <option value="PAID">Paid</option>
                         <option value="PENDING">Pending</option>
                         <option value="SCHEDULED">Scheduled</option>
                     </select>
                 </td>
                 <td class="table-actions">
-                    <button class="btn btn-success" ng-class="{disabled: bCtrl.tabDelete}">
+                    <button class="btn btn-success" ng-disabled="bCtrl.tabDelete || !debt.name"
+                        ng-click="bCtrl.addDebt($index)">
                         <i class="fa fa-plus"></i>
                     </button>
-                    <button class="btn btn-warning" ng-class="{disabled: bCtrl.tabDelete">
+                    <button class="btn btn-warning" ng-disabled="bCtrl.tabDelete || !debt.name"
+                        ng-click="bCtrl.cloneDebt($index, debt)">
                         <i class="fa fa-clone"></i>
                     </button>
-                    <button class="btn btn-danger" ng-class="{disabled: bCtrl.tabDelete">
+                    <button class="btn btn-danger" ng-disabled="bCtrl.tabDelete"
+                        ng-click="bCtrl.deleteDebt($index)">
                         <i class="fa fa-trash-o"></i>
                     </button>
                 </td>

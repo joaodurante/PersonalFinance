@@ -14,17 +14,20 @@
             $http.get(url).then((res) => {
                 vm.billingCycle = {credits: [{}], debts: [{}]};
                 vm.billingCycles = res.data;
+                vm.calculateValues();
                 tabs.show(vm, {tabList: true, tabCreate: true});
             })
         }
 
         vm.showTabUpdate = (billingCycle) => {
             vm.billingCycle = billingCycle;
+            vm.calculateValues();
             tabs.show(vm, {tabUpdate: true});
         }
 
         vm.showTabDelete = (billingCycle) => {
             vm.billingCycle = billingCycle;
+            vm.calculateValues();
             tabs.show(vm, {tabDelete: true});
         }
 
@@ -55,6 +58,61 @@
             }).catch((res) => {
                 msgs.addError(res.data.errors);
             })
+        }
+
+        vm.addCredit = (index) =>{
+            vm.billingCycle.credits.splice(0, 0, {});
+        }
+
+        vm.cloneCredit = (index, {name, value}) =>{
+            vm.billingCycle.credits.splice(0, 0, {name, value});
+            vm.calculateValues();
+        }
+
+        vm.deleteCredit = (index) => {
+            if(vm.billingCycle.credits.length > 1){
+                vm.billingCycle.credits.splice(index, 1);
+                vm.calculateValues();
+            }else{
+                vm.billingCycle.credits = [{}];
+                vm.calculateValues();
+            }
+        }
+
+        vm.addDebt = (index) =>{
+            vm.billingCycle.debts.splice(0, 0, {});
+        }
+
+        vm.cloneDebt = (index, {name, value, status}) =>{
+            vm.billingCycle.debts.splice(0, 0, {name, value, status});
+            vm.calculateValues();
+        }
+
+        vm.deleteDebt = (index) =>{
+            if(vm.billingCycle.debts.length > 1){
+                vm.billingCycle.debts.splice(index, 1);
+                vm.calculateValues();
+            }else{
+                vm.billingCycle.debts = [{}];
+                vm.calculateValues();
+            }
+        }
+
+        vm.calculateValues = () =>{
+            vm.credit = 0;
+            vm.debt = 0;
+
+            if(vm.billingCycle){
+                // for de todos os elementos de credits, pegando apenas {value}
+                vm.billingCycle.credits.forEach(({value}) =>{
+                                //if (!value || value is not a number) soma 0 else parsefloat(value)
+                    vm.credit += !value || isNaN(value) ? 0 : parseFloat(value);
+                });
+                vm.billingCycle.debts.forEach(({value}) =>{
+                    vm.debt += !value || isNaN(value) ? 0 : parseFloat(value);
+                })
+            }
+            vm.total = vm.credit - vm.debt;
         }
 
         vm.refresh();
