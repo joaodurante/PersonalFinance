@@ -16,7 +16,6 @@ function js(){
                 'node_modules/admin-lte/plugins/jQueryUI/jquery-ui.min.js',
                 'node_modules/admin-lte/dist/js/adminlte.min.js'
             ])
-            .pipe(uglify())
             .pipe(concat('deps.min.js'))
             .pipe(gulp.dest('public/assets/js'))
     );

@@ -10,7 +10,7 @@
         controller: [
             'gridSystem',
             function(gridSystem){
-                this.$onInit = () => {
+                this.$onChanges = () => {
                     this.gridClasses = gridSystem.toCssClasses(this.grid);
                 }
             }

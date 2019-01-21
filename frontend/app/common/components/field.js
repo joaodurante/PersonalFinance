@@ -1,4 +1,4 @@
-(function(){
+(()=>{
     angular.module('personalFinance').component('field', {
         bindings: {
             id: '@',
@@ -12,7 +12,7 @@
         controller: [
             'gridSystem',
             function(gridSystem){
-                this.$onInit = () => {
+                this.$onChanges = () => {
                     this.gridClasses = gridSystem.toCssClasses(this.grid);
                 }
             }
