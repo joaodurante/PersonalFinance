@@ -1,12 +1,13 @@
 angular.module('personalFinance').controller('dashController', [
     '$http',
+    'consts',
     DashController
 ]);
 
-function DashController($http){
+function DashController($http, consts){
     const vm = this;
     vm.getSummary = function(){
-        const url = 'http://localhost:3000/api/billingSummary';
+        const url = consts.billingSummaryUrl;
         $http.get(url).then((res) => {
             const {credit = 0, debt = 0} = res.data;
             vm.credit = credit;

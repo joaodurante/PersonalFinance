@@ -3,6 +3,7 @@ html {
 }
 
 .main-footer {
+    position: fixed;
     bottom: 0px;
     width: 100%;
 }
@@ -18,4 +19,12 @@ html {
 .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
     background-color: #8e8e8e;
     border-color: #8e8e8e;
+}
+
+.auth {
+    background: #d2d6de;
+}
+
+.login-box-body {
+    background-color: #fff;
 }

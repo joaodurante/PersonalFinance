@@ -5,4 +5,12 @@
 
 <nav class="navbar navbar-static-top">
     <a href class="sidebar-toggle" data-toggle="push-menu" role="button"></a>
+
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu" ng-include="'/template/header/user.html'"
+                ng-controller="authController as auth"></li>
+        </ul>
+    </div>
 </nav>
+

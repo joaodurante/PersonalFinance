@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { BillingCycle } from '../billingCycle/billingCycle';
 
-export function getSummary(req, res) {
+function getSummary(req, res) {
     BillingCycle.aggregate([
         { $project: { credit: {$sum: "$credits.value"}, debt: {$sum: "$debts.value"} } },
         { $group: { _id: null, credit: {$sum: "$credit"}, debt: {$sum: "$debt"} } },
@@ -15,3 +15,5 @@ export function getSummary(req, res) {
         }
     });
 }
+
+export { getSummary };

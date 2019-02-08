@@ -13,10 +13,13 @@
   "dependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/express": "^4.16.0",
+    "@types/jsonwebtoken": "^8.3.0",
     "@types/node": "^10.12.18",
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-query-int": "^3.0.0",
+    "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.1",
     "mongoose-paginate": "^5.0.3",
